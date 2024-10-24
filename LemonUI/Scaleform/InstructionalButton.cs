@@ -1,6 +1,8 @@
 #if FIVEM
 using CitizenFX.Core;
 using CitizenFX.Core.Native;
+#elif FIVEM_MONOV2
+using CitizenFX.FiveM;
 #elif RAGEMP
 using RAGE.Game;
 #elif ALTV

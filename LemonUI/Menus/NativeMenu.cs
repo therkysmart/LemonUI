@@ -3,6 +3,11 @@ using CitizenFX.Core;
 using CitizenFX.Core.Native;
 using CitizenFX.Core.UI;
 using Font = CitizenFX.Core.UI.Font;
+#elif FIVEM_MONOV2
+using CitizenFX.FiveM;
+using CitizenFX.FiveM.GUI;
+using CitizenFX.FiveM.Native;
+using Font = CitizenFX.FiveM.GUI.Font;
 #elif ALTV
 using AltV.Net.Client;
 using Font = LemonUI.Elements.Font;
@@ -25,13 +30,13 @@ using CancelEventArgs = System.ComponentModel.CancelEventArgs;
 using CancelEventHandler = System.ComponentModel.CancelEventHandler;
 using Font = GTA.UI.Font;
 #endif
-using LemonUI.Elements;
-using LemonUI.Scaleform;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using LemonUI.Elements;
+using LemonUI.Scaleform;
 using LemonUI.Tools;
 
 namespace LemonUI.Menus
@@ -1147,6 +1152,8 @@ namespace LemonUI.Menus
             // If the controls are disabled, the menu has just been opened or the text input field is active, return
 #if FIVEM
             bool isKeyboardActive = API.UpdateOnscreenKeyboard() == 0;
+#elif FIVEM_MONOV2
+            bool isKeyboardActive = Natives.UpdateOnscreenKeyboard() == 0;
 #elif ALTV
             bool isKeyboardActive = Alt.Natives.UpdateOnscreenKeyboard() == 0;
 #elif RAGEMP
@@ -1186,7 +1193,7 @@ namespace LemonUI.Menus
             long time = Alt.Natives.GetGameTimer();
 #elif RAGEMP
             long time = Misc.GetGameTimer();
-#elif FIVEM || RPH || SHVDN3 || SHVDNC
+#elif FIVEM || FIVEM_MONOV2 || RPH || SHVDN3 || SHVDNC
             long time = Game.GameTime;
 #endif
 
@@ -1231,7 +1238,7 @@ namespace LemonUI.Menus
                 {
                     if (GameScreen.IsCursorInArea(PointF.Empty, searchAreaSize))
                     {
-#if FIVEM || SHVDN3 || SHVDNC
+#if FIVEM || FIVEM_MONOV2 || SHVDN3 || SHVDNC
                         GameplayCamera.RelativeHeading += 5;
 #elif ALTV
                         float current = Alt.Natives.GetGameplayCamRelativeHeading();
@@ -1245,7 +1252,7 @@ namespace LemonUI.Menus
                     }
                     else if (GameScreen.IsCursorInArea(searchAreaRight, searchAreaSize))
                     {
-#if FIVEM || SHVDN3 || SHVDNC
+#if FIVEM || FIVEM_MONOV2 || SHVDN3 || SHVDNC
                         GameplayCamera.RelativeHeading -= 5;
 #elif ALTV
                         float current = Alt.Natives.GetGameplayCamRelativeHeading();

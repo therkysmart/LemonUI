@@ -1,5 +1,7 @@
 #if FIVEM
 using CitizenFX.Core.UI;
+#elif FIVEM_MONOV2
+using CitizenFX.FiveM.GUI;
 #elif RAGEMP
 using RAGE.Game;
 #elif SHVDN3 || SHVDNC

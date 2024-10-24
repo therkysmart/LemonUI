@@ -5,6 +5,9 @@ using RAGE.Game;
 #elif FIVEM
 using CitizenFX.Core.Native;
 using CitizenFX.Core.UI;
+#elif FIVEM_MONOV2
+using CitizenFX.FiveM.GUI;
+using CitizenFX.FiveM.Native;
 #elif RPH
 using Rage.Native;
 #elif SHVDN3 || SHVDNC
@@ -37,6 +40,8 @@ namespace LemonUI.Tools
                 return Alt.Natives.GetSafeZoneSize();
 #elif FIVEM
                 return API.GetSafeZoneSize();
+#elif FIVEM_MONOV2
+                return Natives.GetSafeZoneSize();
 #elif RAGEMP
                 return Invoker.Invoke<float>(Natives.GetSafeZoneSize);
 #elif RPH

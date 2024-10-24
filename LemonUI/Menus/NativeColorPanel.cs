@@ -1,6 +1,9 @@
 #if FIVEM
 using CitizenFX.Core;
 using CitizenFX.Core.UI;
+#elif FIVEM_MONOV2
+using CitizenFX.FiveM;
+using CitizenFX.FiveM.GUI;
 #elif ALTV
 using AltV.Net.Client;
 #elif RAGEMP

@@ -1,5 +1,7 @@
 #if FIVEM
 using Font = CitizenFX.Core.UI.Font;
+#elif FIVEM_MONOV2
+using Font = CitizenFX.FiveM.GUI.Font;
 #elif RAGEMP
 using Font = RAGE.Game.Font;
 #elif RPH

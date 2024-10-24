@@ -2,6 +2,10 @@
 using CitizenFX.Core;
 using CitizenFX.Core.Native;
 using CitizenFX.Core.UI;
+#elif FIVEM_MONOV2
+using CitizenFX.Core;
+using CitizenFX.FiveM;
+using CitizenFX.FiveM.Native;
 #elif RAGEMP
 using RAGE.Game;
 using RAGE.NUI;
@@ -40,6 +44,9 @@ namespace LemonUI.Tools
                 return new SizeF(width, height);
 #elif FIVEM
                 return CitizenFX.Core.UI.Screen.Resolution;
+#elif FIVEM_MONOV2
+                Size2 raw = CitizenFX.FiveM.GUI.Screen.Resolution;
+                return new SizeF(raw.Width, raw.Height);
 #elif RAGEMP
                 ScreenResolutionType raw = Game.ScreenResolution;
                 return new SizeF(raw.Width, raw.Height);
@@ -59,6 +66,8 @@ namespace LemonUI.Tools
             {
 #if FIVEM
                 return API.GetAspectRatio(false);
+#elif FIVEM_MONOV2
+                return Natives.GetAspectRatio(false);
 #elif RAGEMP
                 return Invoker.Invoke<float>(Natives.GetAspectRatio);
 #elif RPH
@@ -80,6 +89,9 @@ namespace LemonUI.Tools
 #if FIVEM
                 float cursorX = API.GetControlNormal(0, (int)Control.CursorX);
                 float cursorY = API.GetControlNormal(0, (int)Control.CursorY);
+#elif FIVEM_MONOV2
+                float cursorX = Natives.GetControlNormal(0, (int)Control.CursorX);
+                float cursorY = Natives.GetControlNormal(0, (int)Control.CursorY);
 #elif ALTV
                 float cursorX = Alt.Natives.GetControlNormal(0, (int)Control.CursorX);
                 float cursorY = Alt.Natives.GetControlNormal(0, (int)Control.CursorY);
@@ -131,6 +143,8 @@ namespace LemonUI.Tools
         {
 #if FIVEM
             API.SetMouseCursorActiveThisFrame();
+#elif FIVEM_MONOV2
+            Natives.SetMouseCursorActiveThisFrame();
 #elif ALTV
             Alt.Natives.SetMouseCursorThisFrame();
 #elif RAGEMP

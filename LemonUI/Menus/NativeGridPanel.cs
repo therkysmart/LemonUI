@@ -2,6 +2,9 @@
 using CitizenFX.Core;
 using CitizenFX.Core.Native;
 using CitizenFX.Core.UI;
+#elif FIVEM_MONOV2
+using CitizenFX.FiveM;
+using CitizenFX.FiveM.GUI;
 #elif ALTV
 using AltV.Net.Client;
 #elif RAGEMP
@@ -15,9 +18,9 @@ using GTA;
 using GTA.UI;
 #endif
 using LemonUI.Elements;
+using LemonUI.Tools;
 using System;
 using System.Drawing;
-using LemonUI.Tools;
 
 namespace LemonUI.Menus
 {
@@ -317,7 +320,7 @@ namespace LemonUI.Menus
                 Controls.EnableThisFrame(Control.ScriptRightAxisX);
                 Controls.EnableThisFrame(Control.ScriptRightAxisY);
 
-#if FIVEM
+#if FIVEM || FIVEM_MONOV2
                 float rX = Game.GetControlNormal(0, Control.ScriptRightAxisX);
                 float rY = Game.GetControlNormal(0, Control.ScriptRightAxisY);
                 float frameTime = Game.LastFrameTime;

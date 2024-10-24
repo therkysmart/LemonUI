@@ -3,6 +3,9 @@ using AltV.Net.Client;
 #elif FIVEM
 using CitizenFX.Core;
 using CitizenFX.Core.Native;
+#elif FIVEM_MONOV2
+using CitizenFX.FiveM;
+using CitizenFX.FiveM.Native;
 #elif RAGEMP
 using RAGE.Game;
 #elif RPH
@@ -153,7 +156,7 @@ namespace LemonUI.Scaleform
             long time = Alt.Natives.GetGameTimer();
 #elif RAGEMP
             long time = Misc.GetGameTimer();
-#elif FIVEM || RPH || SHVDN3 || SHVDNC
+#elif FIVEM || FIVEM_MONOV2 || RPH || SHVDN3 || SHVDNC
             long time = Game.GameTime;
 #endif
             showUntil = time + 333 + 333 + (Duration * 1000);
@@ -189,7 +192,7 @@ namespace LemonUI.Scaleform
             long time = Alt.Natives.GetGameTimer();
 #elif RAGEMP
             long time = Misc.GetGameTimer();
-#elif FIVEM || RPH || SHVDN3 || SHVDNC
+#elif FIVEM || FIVEM_MONOV2 || RPH || SHVDN3 || SHVDNC
             long time = Game.GameTime;
 #endif
 
@@ -210,22 +213,25 @@ namespace LemonUI.Scaleform
                 return;
             }
 
-            #if ALTV
+#if ALTV
             Alt.Natives.DrawScaleformMovieFullscreenMasked(Background.Handle, Foreground.Handle, 255, 255, 255, 255);
             Alt.Natives.DrawScaleformMovieFullscreen(Handle, 255, 255, 255, 255, 255);
-            #elif FIVEM
+#elif FIVEM
             API.DrawScaleformMovieFullscreenMasked(Background.Handle, Foreground.Handle, 255, 255, 255, 255);
             API.DrawScaleformMovieFullscreen(Handle, 255, 255, 255, 255, 255);
-            #elif RAGEMP
+#elif FIVEM_MONOV2
+            Natives.DrawScaleformMovieFullscreenMasked(Background.Handle, Foreground.Handle, 255, 255, 255, 255);
+            Natives.DrawScaleformMovieFullscreen(Handle, 255, 255, 255, 255, 255);
+#elif RAGEMP
             Invoker.Invoke(Natives.DrawScaleformMovieFullscreenMasked, Background.Handle, Foreground.Handle, 255, 255, 255, 255);
             Invoker.Invoke(Natives.DrawScaleformMovieFullscreen, Handle, 255, 255, 255, 255);
-            #elif RPH
+#elif RPH
             NativeFunction.CallByHash<int>(0xCF537FDE4FBD4CE5, Background.Handle, Foreground.Handle, 255, 255, 255, 255);
             NativeFunction.CallByHash<int>(0x0DF606929C105BE1, Handle, 255, 255, 255, 255);
-            #elif SHVDN3
+#elif SHVDN3
             Function.Call(Hash.DRAW_SCALEFORM_MOVIE_FULLSCREEN_MASKED, Background.Handle, Foreground.Handle, 255, 255, 255, 255);
             Function.Call(Hash.DRAW_SCALEFORM_MOVIE_FULLSCREEN, Handle, 255, 255, 255, 255);
-            #endif
+#endif
         }
 
         #endregion

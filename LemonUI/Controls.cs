@@ -1,6 +1,9 @@
 #if FIVEM
 using CitizenFX.Core;
 using CitizenFX.Core.Native;
+#elif FIVEM_MONOV2
+using CitizenFX.FiveM;
+using CitizenFX.FiveM.Native;
 #elif ALTV
 using AltV.Net.Client;
 #elif RAGEMP
@@ -13,7 +16,6 @@ using GTA;
 using GTA.Native;
 #endif
 using System.Collections.Generic;
-using LemonUI.Elements;
 
 namespace LemonUI
 {
@@ -33,6 +35,8 @@ namespace LemonUI
             {
 #if FIVEM
                 return !API.IsInputDisabled(2);
+#elif FIVEM_MONOV2
+                return !Natives.IsInputDisabled(2);
 #elif ALTV
                 return !Alt.Natives.IsUsingKeyboardAndMouse(2);
 #elif RAGEMP
@@ -58,6 +62,8 @@ namespace LemonUI
         {
 #if FIVEM
             return API.IsDisabledControlJustPressed(0, (int)control);
+#elif FIVEM_MONOV2
+            return Natives.IsDisabledControlJustPressed(0, (int)control);
 #elif ALTV
             return Alt.Natives.IsDisabledControlJustPressed(0, (int)control);
 #elif RAGEMP
@@ -79,6 +85,8 @@ namespace LemonUI
         {
 #if FIVEM
             return API.IsDisabledControlPressed(0, (int)control);
+#elif FIVEM_MONOV2
+            return Natives.IsDisabledControlPressed(0, (int)control);
 #elif ALTV
             return Alt.Natives.IsDisabledControlPressed(0, (int)control);
 #elif RAGEMP
@@ -96,6 +104,8 @@ namespace LemonUI
         {
 #if FIVEM
             API.DisableAllControlActions(inputGroup);
+#elif FIVEM_MONOV2
+            Natives.DisableAllControlActions(inputGroup);
 #elif ALTV
             Alt.Natives.DisableAllControlActions(inputGroup);
 #elif RAGEMP
@@ -114,6 +124,8 @@ namespace LemonUI
         {
 #if FIVEM
             API.EnableControlAction(0, (int)control, true);
+#elif FIVEM_MONOV2
+            Natives.EnableControlAction(0, (int)control, true);
 #elif ALTV
             Alt.Natives.EnableControlAction(0, (int)control, true);
 #elif RAGEMP
@@ -143,6 +155,8 @@ namespace LemonUI
         {
 #if FIVEM
             API.DisableControlAction(0, (int)control, true);
+#elif FIVEM_MONOV2
+            Natives.DisableControlAction(0, (int)control, true);
 #elif ALTV
             Alt.Natives.DisableControlAction(0, (int)control, true);
 #elif RAGEMP

@@ -1,6 +1,9 @@
 #if FIVEM
 using Alignment = CitizenFX.Core.UI.Alignment;
 using Font = CitizenFX.Core.UI.Font;
+#elif FIVEM_MONOV2
+using Alignment = CitizenFX.FiveM.GUI.Alignment;
+using Font = CitizenFX.FiveM.GUI.Font;
 #elif RAGEMP
 using RAGE.Game;
 #elif SHVDN3 || SHVDNC

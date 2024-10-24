@@ -1,6 +1,8 @@
 #if FIVEM
 using CitizenFX.Core;
 using CitizenFX.Core.Native;
+#elif FIVEM_MONOV2
+using CitizenFX.FiveM.Native;
 #elif RAGEMP
 using RAGE.Game;
 #elif RPH
@@ -84,6 +86,9 @@ namespace LemonUI
 #if FIVEM
             Id = API.GetSoundId();
             API.PlaySoundFrontend(Id, File, Set, true);
+#elif FIVEM_MONOV2
+            Id = Natives.GetSoundId();
+            Natives.PlaySoundFrontend(Id, File, Set, true);
 #elif RAGEMP
             Id = Invoker.Invoke<int>(Natives.GetSoundId);
             Invoker.Invoke(Natives.PlaySoundFrontend, Id, File, Set, true);
@@ -115,6 +120,8 @@ namespace LemonUI
 
 #if FIVEM
             API.StopSound(Id);
+#elif FIVEM_MONOV2
+            Natives.StopSound(Id);
 #elif RAGEMP
             Invoker.Invoke(Natives.StopSound, Id);
 #elif RPH
@@ -138,6 +145,8 @@ namespace LemonUI
 
 #if FIVEM
             API.ReleaseSoundId(Id);
+#elif FIVEM_MONOV2
+            Natives.ReleaseSoundId(Id);
 #elif RAGEMP
             Invoker.Invoke(Natives.ReleaseSoundId, Id);
 #elif RPH

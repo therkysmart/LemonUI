@@ -1,5 +1,7 @@
 ﻿#if FIVEM
 using CitizenFX.Core.Native;
+#elif FIVEM_MONOV2
+using CitizenFX.FiveM.Native;
 #elif RAGEMP
 using RAGE.Game;
 #elif RPH
@@ -86,6 +88,11 @@ namespace LemonUI.Elements
             {
                 API.RequestStreamedTextureDict(Dictionary, true);
             }
+#elif FIVEM_MONOV2
+            if (!Natives.HasStreamedTextureDictLoaded(Dictionary))
+            {
+                Natives.RequestStreamedTextureDict(Dictionary, true);
+            }
 #elif RAGEMP
             if (!Invoker.Invoke<bool>(Natives.HasStreamedTextureDictLoaded, Dictionary))
             {
@@ -125,6 +132,8 @@ namespace LemonUI.Elements
             Request();
 #if FIVEM
             API.DrawSprite(Dictionary, Texture, relativePosition.X, relativePosition.Y, relativeSize.Width, relativeSize.Height, Heading, Color.R, Color.G, Color.B, Color.A);
+#elif FIVEM_MONOV2
+            Natives.DrawSprite(Dictionary, Texture, relativePosition.X, relativePosition.Y, relativeSize.Width, relativeSize.Height, Heading, Color.R, Color.G, Color.B, Color.A);
 #elif RAGEMP
             Invoker.Invoke(Natives.DrawSprite, Dictionary, Texture, relativePosition.X, relativePosition.Y, relativeSize.Width, relativeSize.Height, Heading, Color.R, Color.G, Color.B, Color.A);
 #elif RPH
@@ -149,6 +158,8 @@ namespace LemonUI.Elements
             Request();
 #if FIVEM
             API.DrawSpriteUv(Dictionary, Texture, relativePosition.X, relativePosition.Y, relativeSize.Width, relativeSize.Height, topLeft.X, topLeft.Y, bottomRight.X, bottomRight.Y, Heading, Color.R, Color.G, Color.B, Color.A);
+#elif FIVEM_MONOV2
+            Natives.DrawSpriteUv(Dictionary, Texture, relativePosition.X, relativePosition.Y, relativeSize.Width, relativeSize.Height, topLeft.X, topLeft.Y, bottomRight.X, bottomRight.Y, Heading, Color.R, Color.G, Color.B, Color.A);
 #elif RAGEMP
             Invoker.Invoke(0x95812F9B26074726, Dictionary, Texture, relativePosition.X, relativePosition.Y, relativeSize.Width, relativeSize.Height, topLeft.X, topLeft.Y, bottomRight.X, bottomRight.Y, Heading, Color.R, Color.G, Color.B, Color.A);
 #elif RPH

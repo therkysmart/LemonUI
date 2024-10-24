@@ -1,5 +1,7 @@
 #if FIVEM
 using CitizenFX.Core.UI;
+#elif FIVEM_MONOV2
+using CitizenFX.FiveM.GUI;
 #elif RAGEMP
 using RAGE.Game;
 #elif RPH
@@ -10,11 +12,10 @@ using GTA.UI;
 #elif ALTV
 using AltV.Net.Client;
 #endif
+using LemonUI.Tools;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using LemonUI.Elements;
-using LemonUI.Tools;
 
 namespace LemonUI.TimerBars
 {
@@ -169,6 +170,10 @@ namespace LemonUI.TimerBars
             CitizenFX.Core.UI.Screen.Hud.HideComponentThisFrame(HudComponent.AreaName);
             CitizenFX.Core.UI.Screen.Hud.HideComponentThisFrame(HudComponent.StreetName);
             CitizenFX.Core.UI.Screen.Hud.HideComponentThisFrame(HudComponent.VehicleName);
+#elif FIVEM_MONOV2
+            CitizenFX.FiveM.GUI.Screen.Hud.HideComponentThisFrame(HudComponent.AreaName);
+            CitizenFX.FiveM.GUI.Screen.Hud.HideComponentThisFrame(HudComponent.StreetName);
+            CitizenFX.FiveM.GUI.Screen.Hud.HideComponentThisFrame(HudComponent.VehicleName);
 #elif RAGEMP
             Invoker.Invoke(Natives.HideHudComponentThisFrame, HudComponent.AreaName);
             Invoker.Invoke(Natives.HideHudComponentThisFrame, HudComponent.StreetName);
