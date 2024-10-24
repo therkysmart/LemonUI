@@ -1008,6 +1008,8 @@ namespace LemonUI.Menus
             // And set the position of the cursor
 #if FIVEM
             API.SetCursorLocation(pos.X, pos.Y);
+#elif FIVEM_MONOV2
+            Natives.SetCursorLocation(pos.X, pos.Y);
 #elif RAGEMP
             Invoker.Invoke(Natives.SetCursorLocation, pos.X, pos.Y);
 #elif RPH
@@ -1659,6 +1661,9 @@ namespace LemonUI.Menus
 #if FIVEM
                 API.SetInputExclusive(0, (int)Control.PhoneCancel);
                 API.SetInputExclusive(0, (int)Control.FrontendPause);
+#elif FIVEM_MONOV2
+                Natives.SetInputExclusive(0, (int)Control.PhoneCancel);
+                Natives.SetInputExclusive(0, (int)Control.FrontendPause);
 #elif ALTV
                 Alt.Natives.SetInputExclusive(0, (int)Control.CellPhoneCancel);
                 Alt.Natives.SetInputExclusive(0, (int)Control.FrontendPause);

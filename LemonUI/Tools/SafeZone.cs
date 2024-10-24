@@ -111,6 +111,8 @@ namespace LemonUI.Tools
             float realX = 0, realY = 0;
 #if FIVEM
             API.GetScriptGfxPosition(relativeX, relativeY, ref realX, ref realY);
+#elif FIVEM_MONOV2
+            Natives.GetScriptGfxPosition(relativeX, relativeY, ref realX, ref realY);
 #elif ALTV
             Alt.Natives.GetScriptGfxAlignPosition(relativeX, relativeY, ref realX, ref realY);
 #elif RAGEMP
@@ -152,6 +154,9 @@ namespace LemonUI.Tools
 #if FIVEM
             API.SetScriptGfxAlign((int)horizontal, (int)vertical);
             API.SetScriptGfxAlignParams(0, 0, 0, 0);
+#elif FIVEM_MONOV2
+            Natives.SetScriptGfxAlign((int)horizontal, (int)vertical);
+            Natives.SetScriptGfxAlignParams(0, 0, 0, 0);
 #elif ALTV
             Alt.Natives.SetScriptGfxAlign((int)horizontal, (int)vertical);
             Alt.Natives.SetScriptGfxAlignParams(0, 0, 0, 0);
@@ -173,6 +178,8 @@ namespace LemonUI.Tools
         {
 #if FIVEM
             API.ResetScriptGfxAlign();
+#elif FIVEM_MONOV2
+            Natives.ResetScriptGfxAlign();
 #elif ALTV
             Alt.Natives.ResetScriptGfxAlign();
 #elif RAGEMP
